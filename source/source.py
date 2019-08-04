@@ -1,7 +1,9 @@
 from toggl.api_client import TogglClientApi
 import json
+from os.path import expanduser
 
-settings = json.load(open("/home/dthole/.creds/toggl.txt"))
+home = expanduser("~")
+settings = json.load(open(home + "/.creds/toggl.txt"))
 
 toggle_client = TogglClientApi(settings)
 
