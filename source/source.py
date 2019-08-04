@@ -6,6 +6,8 @@ settings = json.load(open("/home/dthole/.creds/toggl.txt"))
 toggle_client = TogglClientApi(settings)
 
 response = toggle_client.get_workspaces()
+workspaces = json.loads(response.text)
 
-print(response)
+print(workspaces)
+
 
