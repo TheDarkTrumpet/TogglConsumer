@@ -1,9 +1,9 @@
 import json
-import settings
+from .settings import *
 
 
 def GetProjects():
-    client = settings.Client
+    client = Client
     responseText = client.get_projects()
     return json.loads(responseText.text)
 

@@ -1,6 +1,7 @@
-from toggl import TogglClientApi
-from os.path import expanduser
 import json
+from os.path import expanduser
+
+from toggl.api_client import TogglClientApi
 
 
 def GetCredentials():
