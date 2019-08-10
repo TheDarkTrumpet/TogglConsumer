@@ -1,4 +1,4 @@
-from toggl.api_client import TogglClientApi
+from toggl import TogglClientApi
 from os.path import expanduser
 import json
 

@@ -1,6 +1,5 @@
 import json
 import settings
-from toggl.api_client import TogglClientApi
 
 
 def GetProjects():
