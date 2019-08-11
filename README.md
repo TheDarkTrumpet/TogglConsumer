@@ -15,5 +15,5 @@ The libraries used are currently in source/requirements.txt  You can reinstall t
 Right now, one external file is required, and that's in "~/.creds/toggl.txt", this is a dictionary of the following format:
 
 ```json
-{"token": "<YOUR_TOGGL_API", "user_agent": "TogglConsumer", "workspace_id": <WORKSPACE_ID> }
+{"token": "<YOUR_TOGGL_API", "user_agent": togglconsumer, "workspace_id": <WORKSPACE_ID> }
 ```

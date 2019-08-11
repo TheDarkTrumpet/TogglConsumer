@@ -1,12 +1,12 @@
 import json
 from os.path import expanduser
 
-from toggl.api_client import TogglClientApi
+from togglconsumer.api_client import TogglClientApi
 
 
 def GetCredentials():
     homeDirectory = expanduser("~")
-    return json.load(open(homeDirectory + "/.creds/toggl.txt"))
+    return json.load(open(homeDirectory + "/.creds/togglconsumer.txt"))
 
 
 def GetClient():

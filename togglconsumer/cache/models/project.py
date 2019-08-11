@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-from toggl.cache.models.base import Base
+from togglconsumer.cache.models.base import Base
 
 
 class Project(Base):
