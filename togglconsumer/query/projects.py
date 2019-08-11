@@ -1,5 +1,5 @@
 import json
-from .settings import *
+from togglconsumer.query.settings import *
 
 
 def GetProjects():
