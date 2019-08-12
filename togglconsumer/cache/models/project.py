@@ -12,6 +12,6 @@ class Project(Base):
     is_private = Column(Boolean)
     active = Column(Boolean)
     actual_hours = Column(Integer)
-    
+
     def __repr__(self):
         return "<Project(id='%i' name='%s)>" % (self.id, self.name)
