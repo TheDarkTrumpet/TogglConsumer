@@ -1,8 +1,6 @@
 import json
 from togglconsumer.cache.models.project import Project
-from togglconsumer.query.settings import Settings
 from .base import Base, Elements
-from .settings import Settings
 
 class Projects (Base):
     def __init__(self):
