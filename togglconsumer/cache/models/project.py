@@ -6,10 +6,10 @@ from togglconsumer.cache.models.base import Base
 class Project(Base):
     __tablename__ = 'Projects'
 
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    workspace_id = Column(Integer)
+    id = Column(Integer, primary_key=True)
+    wid = Column('workspace_id', Integer)
     cid = Column(Integer)
-    name = Column(String)
+    name = Column(String(255))
     billable = Column(Boolean)
     is_private = Column(Boolean)
     active = Column(Boolean)
@@ -19,15 +19,10 @@ class Project(Base):
     color = Column(Integer)
     auto_estimates = Column(Boolean)
     actual_hours = Column(Integer)
-    hex_color = Column(String)
+    hex_color = Column(String(20))
     rate = Column(DECIMAL)
-    guid = Column(String)
-    currency = Column(String)
-
-    _mapping_override = {
-        "wid": "workspace_id",
-        "cid": "cid",
-    }
+    guid = Column(String(50))
+    currency = Column(String(20))
 
     def __init__(self, input_dictionary=None):
         if input_dictionary is not None:
@@ -38,9 +33,6 @@ class Project(Base):
 
     def set_attributes(self, input_dictionary):
         for key, value in input_dictionary.items():
-            if key in self._mapping_override.keys():
-                key = self._mapping_override[key]
-
             setattr(self, key, value)
             #if self.__getattribute__(key) is not None:
             #    setattr(self, key, value)
