@@ -7,6 +7,12 @@ class Base:
     def __init__(self):
         self.client = Settings().toggl_client
 
+    def from_list(self, jsonlist):
+        elements = []
+        for a in jsonlist:
+            elements.append(cls.from_dict(a))
+        return elements
+
 
 class Elements (Sequence):
     def __getitem__(self, i: int):

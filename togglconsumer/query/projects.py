@@ -1,15 +1,19 @@
 import json
+from togglconsumer.cache.models.project import Project
 from togglconsumer.query.settings import Settings
-from .base import Base, BaseElement
+from .base import Base, Elements
 from .settings import Settings
 
 class Projects (Base):
     def __init__(self):
         self.projects = []
-
+        Base.__init__(self)
 
     def load(self):
-        pass
+        projectsj = self._getprojects()
+        for p in projectsj:
+            project = Project(p)
+            self.projects.append(project)
 
     def _getprojects(self):
         responseText = self.client.get_projects()
@@ -17,7 +21,7 @@ class Projects (Base):
 
 
 
-class Project (BaseElement):
+class Project (Elements):
     def __init__(self):
         self.id = 0
         self.wid = 0
@@ -34,6 +38,17 @@ class Project (BaseElement):
         self.actual_hours = 0
         self.hex_color = 0
 
-    @staticmethod
-    def from_json(cls, json):
-        pass
+    @classmethod
+    def from_dict(cls, items):
+        c = cls()
+        incorrect_headers = []
+        for k, v in items.items():
+            if hasattr(c, k):
+                setattr(c, k, v)
+            else:
+                incorrect_headers.append(k)
+
+        if len(incorrect_headers) > 0:
+            pass
+            # Debug.print_debug(F"Incorrect headers detected: {set(incorrect_headers)}")
+        return c
