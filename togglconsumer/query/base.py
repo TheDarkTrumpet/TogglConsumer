@@ -1,5 +1,10 @@
+from .settings import Settings
+
+
 class Base:
-    pass
+    def __init__(self):
+        self.client = Settings().toggl_client
+
 
 class BaseElement:
     pass

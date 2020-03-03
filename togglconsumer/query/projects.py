@@ -12,8 +12,7 @@ class Projects (Base):
         pass
 
     def _getprojects(self):
-        client = Settings().toggl_client
-        responseText = client.get_projects()
+        responseText = self.client.get_projects()
         return json.loads(responseText.text)
 
 
