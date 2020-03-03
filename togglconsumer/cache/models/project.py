@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, DECIMAL
 
 from togglconsumer.cache.models.base import Base
 
@@ -20,6 +20,9 @@ class Project(Base):
     auto_estimates = Column(Boolean)
     actual_hours = Column(Integer)
     hex_color = Column(String)
+    rate = Column(DECIMAL)
+    guid = Column(String)
+    currency = Column(String)
 
     _mapping_override = {
         "wid": "workspace_id",
@@ -34,6 +37,10 @@ class Project(Base):
         return "<Project(id='%i' name='%s)>" % (self.id, self.name)
 
     def set_attributes(self, input_dictionary):
-        for key, value in input_dictionary.iteritems():
-            if self.__getattribute__(key) is not None:
-                setattr(self, key, value)
+        for key, value in input_dictionary.items():
+            if key in self._mapping_override.keys():
+                key = self._mapping_override[key]
+
+            setattr(self, key, value)
+            #if self.__getattribute__(key) is not None:
+            #    setattr(self, key, value)
