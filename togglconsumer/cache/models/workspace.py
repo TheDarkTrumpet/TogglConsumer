@@ -29,7 +29,7 @@ class Workspace(Base):
             self.set_attributes(input_dictionary)
 
     def __repr__(self):
-        return "<Project(id='%i' name='%s)>" % (self.id, self.name)
+        return "<Workspace(id='%i' name='%s)>" % (self.id, self.name)
 
     def set_attributes(self, input_dictionary):
         for key, value in input_dictionary.items():
