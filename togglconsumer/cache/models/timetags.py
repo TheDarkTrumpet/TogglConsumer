@@ -1,4 +1,6 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, DECIMAL
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, DECIMAL, ForeignKey
+from sqlalchemy.orm import relationship
+
 from togglconsumer.cache.models.base import Base
 
 
@@ -7,6 +9,8 @@ class TimeTags(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50))
+    time_id = Column(Integer, ForeignKey('time.id'))
+    parent = relationship("Time", back_populates="Tags")
 
     def __init__(self, input_dictionary=None):
         if input_dictionary is not None:

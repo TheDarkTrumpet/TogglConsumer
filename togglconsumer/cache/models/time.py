@@ -1,4 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, DECIMAL
+from sqlalchemy.orm import relationship
+
 from togglconsumer.cache.models.base import Base
 
 
@@ -24,6 +26,7 @@ class Time(Base):
     billable = Column(DECIMAL)
     is_billable = Column(Boolean)
     cur = Column(String(30))
+    Tags = relationship("TimeTag", back_populates="Times")
     # Tags
 
     def __init__(self, input_dictionary=None):
