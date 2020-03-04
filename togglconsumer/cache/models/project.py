@@ -1,4 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, DECIMAL
+from sqlalchemy.orm import relationship
+
 from togglconsumer.cache.models.base import Base
 
 
@@ -22,6 +24,7 @@ class Project(Base):
     rate = Column(DECIMAL)
     guid = Column(String(50))
     currency = Column(String(20))
+    times = relationship("Time", back_populates="project")
 
     def __init__(self, input_dictionary=None):
         if input_dictionary is not None:

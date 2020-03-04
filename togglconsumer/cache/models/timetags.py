@@ -10,7 +10,7 @@ class TimeTags(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50))
     time_id = Column(Integer, ForeignKey('time.id'))
-    parent = relationship("Time", back_populates="Tags")
+    times = relationship("Time", back_populates="tags")
 
     def __init__(self, input_dictionary=None):
         if input_dictionary is not None:
